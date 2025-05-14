@@ -1,7 +1,6 @@
 from classes.create_sql import Create_SQL
 from classes.base import Base
 
-
 class Storage(Base):
     """
     retrieve data relevant to the storage/stock of products.
@@ -12,10 +11,9 @@ class Storage(Base):
     
     methods:
         product_storage: retrieve and combine tables relevant to the status 
-                         of the products
-        output_single_product: get single product
+                         of the products.
+        output_single_product: get single product.
     """
-    
     def __init__(self, class_obj):
         self.class_obj = class_obj
         self.products = self.class_obj.products
@@ -27,8 +25,8 @@ class Storage(Base):
         company supplies a given product. 
         
         args:
-            get_table (bool): False, controls if a table is printed out or not
-            product_id (int else Bool): product_id to show
+            get_table (bool): False, controls if a table is printed out or not.
+            product_id (int else bool): product_id to show.
         """
         name = ['product_id', 'product_name', 'unit_price', 'units_in_stock']
         headers = name + ['supplier_company_name']
@@ -53,9 +51,9 @@ class Storage(Base):
         prints out a single product and it's status.
         
         args:
-            products (list): nested list
-            headers (list): list with header names
-            product_id (int): product_id
+            products (list): nested list.
+            headers (list): list with header names.
+            product_id (int): product_id.
         """
         idx = self.check_index(product_id, len(products), 'product_id', 
                                'prudct', False)

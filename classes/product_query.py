@@ -3,7 +3,6 @@ from django.db.models import Count
 from classes.base import Base
 import numpy as np
 
-
 class Product_query(Base):
     """
     class containing related methods to product queries.
@@ -13,12 +12,12 @@ class Product_query(Base):
                    instances.
     
     methods:
-        get_product_order: creates a dict with product_id
-        product_storage: get status of products in storage
-        output_single_product: print the status of a single product
-        product_sold: creates a table based on amount of products sold
+        get_product_order: creates a dict with product_id.
+        product_storage: get status of products in storage.
+        output_single_product: print the status of a single product.
+        product_sold: creates a table based on amount of products sold.
         category_sale: creates a table related to amount of products sold
-                       for either category or the supplier
+                       for either category or the supplier.
     """
     def __init__(self, class_obj):
         self.orders = class_obj.orders
@@ -38,7 +37,7 @@ class Product_query(Base):
         makes a dict with product_id and the values as arrays.
         
         return:
-            self.product_order (dict): product_id as key, and array as values
+            self.product_order (dict): product_id as key, and array as values.
         """
         product_id = list(sum(self.products.values_list('product_id'), ()))
         self.product_order = {}
@@ -61,8 +60,8 @@ class Product_query(Base):
         company supplies a given product. 
         
         args:
-            get_table (bool): False, controls if a table is printed out or not
-            product_id (int else Bool): product_id to show
+            get_table (bool): False, controls if a table is printed out or not.
+            product_id (int else bool): product_id to show.
         """
         name = ['product_id', 'product_name', 'unit_price', 'units_in_stock']
         headers = name + ['supplier_company_name']
@@ -87,9 +86,9 @@ class Product_query(Base):
         prints out a single product and it's status.
         
         args:
-            products (list): nested list
-            headers (list): list with header names
-            product_id (int): product_id
+            products (list): nested list.
+            headers (list): list with header names.
+            product_id (int): product_id.
         """
         idx = self.check_index(product_id, len(products), 
                                'product_id', 'prudct', False)        
@@ -97,10 +96,10 @@ class Product_query(Base):
     
     def product_sold(self, get_table=False):
         """
-        makes a list with product_id and amount each product has sold
+        makes a list with product_id and amount each product has sold.
         
         args:
-            get_table (Bool): False, prints out table if not False
+            get_table (bool): False, prints out table if not False.
         """
         var = ['product_id', 'units_in_stock']
         product = list(self.products.values_list(*var))
@@ -121,8 +120,8 @@ class Product_query(Base):
         a given category or supplier.
         
         args:
-            get_table (Bool): False, prints out table if not False
-            variable (str): category_id or supplier_id 
+            get_table (bool): False, prints out table if not False.
+            variable (str): category_id or supplier_id.
         """
         if variable == 'supplier_id':
             headers = ['supplier', 'number_of_products', 'units_sold']

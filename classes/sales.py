@@ -4,9 +4,29 @@ from classes.base import Base
 import itertools as itr
 import numpy as np
 
-
-
 class Sales(Base):
+    """
+    contains queries related to the sales of products.
+    
+    attributes:
+        class_obj: class object from Base for more specific functions or
+                   instances.
+    
+    methods:
+        sale_table: creates a table containing what product a given customer
+                    bought.
+        combine_list: combines the list from monthly sales and headers.
+        monthly_plot: creates the graphs for monthly sales.
+        monthly_sales: prepares and saves the data for monthly sale.
+        average_value: create a table with the average value spent by customer.
+        product_request_header: create headers for the product_request method.
+        replace_nan: replaces np.NaN in the nested list or array.
+        product_request: calculate the demand of the products over 
+                         given intervals.
+        seasonal_trend: calculate the trend in sales through the seasons.
+        linear_regression: does a linear regression for a given dataset.
+        comparison: compares the price vs volume.
+    """
     def __init__(self, class_obj):
         self.products = class_obj.products
         self.orders = class_obj.orders
@@ -18,11 +38,16 @@ class Sales(Base):
         
         self.variable = 'order_id'
         self.variable_list = ['employee_id', 'order_date', 'ship_country']
-        
-    def test_func(self):
-        print(self.result)
     
     def sale_table(self, get_table=False, write_to_file=False):
+        """
+        creates a table over what products a given customer have bought and
+        the quantities.
+        
+        args:
+            get_table (bool): prints a table when not False.
+            write_to_file (bool): write the result to txt file if not False.
+        """
         val = ['order_id', 'customer_id', 'employee_id', 
                'order_date', 'ship_country']
         
@@ -58,6 +83,21 @@ class Sales(Base):
     
     def combine_list(self, header_list, value_list, months, y0, 
                      year_split=True):
+        """
+        combines the header_list and value_list into a format accepted by 
+        tabulate and Create_SQL.
+
+        args:
+            header_list (list): list with header names.
+            value_list (list): nested list containing the monthly sales.
+            months (list): list containing the name of the months.
+            y0 (int): the start year, or earliest year from the database.
+            year_split (bool): controls if the years are split or merged.
+        
+        return:
+            result (list): nested list.
+            headers (list): list containing the correct header names.
+        """
         years = [f'{y0 + i}' for i in range(self.class_obj.n_years)]
         convert = lambda x: [list(i) for i in x]
         result, headers = [months], ['month']
@@ -77,6 +117,16 @@ class Sales(Base):
         return result, headers
     
     def monthly_sales_plot(self, y0, months, data, price=None):
+        """
+        creates the graphs/plots for the monthly sales.
+        
+        args:
+            y0 (int): the start year, or earliest year from the database.
+            months (list): list containing the name of the months.
+            data (np.array): array containing the data used to make the graphs.
+            price (bool): np.array when the price or value are included, 
+                          otherwise it will only plot the sales data.
+        """
         y_axis_label = ['units', 'price']
         data = data.astype(float)
         data[data==0] = np.nan
@@ -133,6 +183,16 @@ class Sales(Base):
         
     def monthly_sales(self, include_price=False, separate_years=False,
                       get_table=False, make_plot=True):
+        """
+        prepares the monthly sales to be plotted and saved depending on 
+        different variables.
+        
+        args:
+            include_price (bool): includes the total price when set to True.
+            separate_years (bool): keeps the years separated when True.
+            get_table (bool): prints a table when not False.
+            make_plot (bool): create a plot when it is set to True.
+        """
         month_data = self.class_obj.month_data.copy()
         months = self.class_obj.months.copy()
         date_list = self.class_obj.key_list
@@ -180,6 +240,16 @@ class Sales(Base):
             self.universal_table(result, headers)
         
     def average_value(self, get_table=False):
+        """
+        creates a table of the average value spent by each customer and sorts
+        the results from highest to lowest.
+        
+        args:
+            get_table (bool): prints a table when not False.
+        
+        return:
+            sorted_result (list): nested list with the result.
+        """
         key_list = self.order_dict.keys()
         detailed_arr = self.detailed_arr[:, 1:]
         
@@ -206,6 +276,17 @@ class Sales(Base):
         return sorted_result
     
     def product_request_header(self, start_year, interval_size=3):
+        """
+        creates the header for the product_request method, which can vary in
+        the interval size.
+        
+        args:
+            start_year (int): the earliest year from the database.
+            interval_size (int): interval size in months.
+        
+        return:
+            header (list): list containing the headers.
+        """
         n_years = self.class_obj.n_years
         n = int(12 / interval_size)
         
@@ -229,7 +310,16 @@ class Sales(Base):
                               f'{months[int(t1) - 1]}_{i[2:]}')
         return header
     
-    def replace_nan(self, value_list):        
+    def replace_nan(self, value_list):
+        """
+        replaces np.NaN in the given list.
+        
+        args:
+            value_list (list): nested list.
+        
+        return:
+            value_list (list): nested list, without np.NaN.
+        """
         n, m = np.shape(value_list)
         for i, j in itr.product(range(n), range(m)):
             if np.isnan(value_list[i][j]):
@@ -237,6 +327,17 @@ class Sales(Base):
         return value_list
     
     def product_request(self, interval_size=3, get_table=False):
+        """
+        calculate the shift in demands between interval of given size. It
+        is represented as the slope from one point to the next. 
+        
+        args:
+            interval_size (int): interval size in months.
+            get_table (bool): prints a table when not False.
+        
+        return:
+            result (list): nested list with the slope for each intervals.
+        """
         if not(interval_size in [1, 2, 3, 4, 6, 12]):
             print('\ninvalid interval size given, defaulting '
                   'to interval_size = 3.')
@@ -284,6 +385,14 @@ class Sales(Base):
         return result
     
     def seasonal_trend(self, get_table=False, quarterly=False):
+        """
+        calculates the average minimum and maximum amount of sold products 
+        for a given month or interval. It creates a table with the product_id
+        and the time it sold the least and most, including the amount.
+        
+        args:
+            get_table (bool): prints a table when not False.
+        """
         month_data = self.class_obj.month_data.copy()
         date_list = self.class_obj.key_list
         name = self.class_obj.months.copy()
@@ -334,6 +443,16 @@ class Sales(Base):
             self.universal_table(res, header)
 
     def linear_regression(self, x, y):
+        """
+        does a linear regression for given x and y values.
+        
+        args:
+            x (np.array): array with x values.
+            y (np.array): array with y values.
+        
+        return:
+            b0 + b1 * x: the calculated line.
+        """
         n = len(x)
         
         x_mean = np.mean(x)
@@ -347,6 +466,16 @@ class Sales(Base):
         return b0 + b1 * x
 
     def comparison(self, get_table=False, make_plot=True, idx=2):
+        """
+        compares the price against volume, and creates a plot and table of the
+        result. The price includes the discount.
+        
+        args:
+            get_table (bool): prints a table when not False.
+            make_plot (bool): make a plot of the result when set to True.
+            idx (int): the coloumn to sort the rows by.
+        """
+        
         if not(idx in [0, 1, 2]):
             print('\ninvalid integer for column to sort, ' 
                   'defaulting to idx = 2')

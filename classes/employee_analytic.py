@@ -5,21 +5,19 @@ import numpy as np
 
 class Employee_analytic(Base):
     """
-    create table related to employee queries and tables.
+    create table related to employee queries/tables.
     
     attributes:
         class_obj: class object from Base for more specific functions or
                    instances.
     
     methods:
-        initiate_setup: method to automatically initiate necessary methods
-        setup: create dictionary with relevant info for the employees
-        get_full_analysis: retrieves relevant information and creates a table
-        combine_table: combine lists into a singular list
-        make_table: creates table and write result into sql file
+        initiate_setup: method to automatically initiate necessary methods.
+        setup: create dictionary with relevant info for the employees.
+        get_full_analysis: retrieves relevant information and creates a table.
+        combine_table: combine lists into a singular list.
+        make_table: creates table and write result into sql file.
     """
-    
-    
     def __init__(self, class_obj):
         self.orders = class_obj.orders
         self.employees = class_obj.employees
@@ -31,7 +29,7 @@ class Employee_analytic(Base):
     
     def initiate_setup(self):
         """
-        default setup to use
+        default setup to use.
         """
         self.setup()
         self.get_full_analysis()
@@ -42,7 +40,7 @@ class Employee_analytic(Base):
         more customary setup used when checking the result for debugging.
         
         args:
-            get_table (False): prints a table when not False
+            get_table (bool): prints a table when not False.
         """
         var = ['employee_id', 'last_name', 'first_name', 'title', 'hire_date']
         data = list(self.employees.values_list(*var))
@@ -65,8 +63,8 @@ class Employee_analytic(Base):
         employees have handled. 
         
         args:
-            index_to_sort (int): index, or column to sort
-            get_table (False): prints a table when not False
+            index_to_sort (int): index, or column to sort.
+            get_table (bool): prints a table when not False.
         """
         sales_count = list(self.orders.values_list('employee_id').annotate(
             tot=Count('employee_id')).order_by('-tot'))
@@ -117,15 +115,15 @@ class Employee_analytic(Base):
         possible to print out the table.
         
         args:
-            idx (int): index to sort
-            get_table (Bool): prints a table when not False
-            write_to_file (Bool): save the result as txt file when not False
-            default_header (Bool): use default header, or customary one when
-                                   a list is given
-            filename (str): name of the txt file
+            idx (int): index to sort.
+            get_table (bool): prints a table when not False.
+            write_to_file (bool): save the result as txt file when not False.
+            default_header (bool): use default header, or customary one when
+                                   a list is given.
+            filename (str): name of the txt file.
         
         return:
-            sorted_result (list): nested list
+            sorted_result (list): nested list.
         """
         idx = self.check_index(idx, len(self.result[0]), 'column', 'column')
         

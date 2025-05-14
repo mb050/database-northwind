@@ -10,15 +10,15 @@ class Delivery(Base):
         class_obj: class object from Base for more specific functions or
                    instances.
     methods:
-        setup: set up necessary instances
+        setup: set up necessary instances.
         create_lists: creates lists used in the class, and removes already
                       existing ones.
-        calculate_delivery_time: calculates average delivery time
-        merge: combines lists into a single nested list
-        get_delivery_time: initiates to calculate average delivery time
-        custom_sort: sort nested list containing nan/None
-        make_table: creates table and write result into sql file
-        sum_elements: goes through dictionary and calculates the average
+        calculate_delivery_time: calculates average delivery time.
+        merge: combines lists into a single nested list.
+        get_delivery_time: initiates to calculate average delivery time.
+        custom_sort: sort nested list containing nan/None.
+        make_table: creates table and write result into sql file.
+        sum_elements: goes through dictionary and calculates the average.
     """
     def __init__(self, class_obj):
         self.shippers = class_obj.shippers
@@ -29,7 +29,7 @@ class Delivery(Base):
 
     def setup(self):
         """
-        creates necessary instances
+        creates necessary instances.
         """
         var = ['order_date', 'required_date', 'shipped_date', 'ship_via']
         shippers = self.shippers.values_list('shipper_id', 'company_name')
@@ -67,7 +67,7 @@ class Delivery(Base):
         or not.
 
         args:
-            filtered (Bool): will not filter out dates that becomes negative
+            filtered (bool): will not filter out dates that becomes negative
                              due to errors in the original entry, and instead
                              uses the absolute value.
         """
@@ -108,7 +108,7 @@ class Delivery(Base):
         initiates necessary method to calculate the average delivery time.
         
         args:
-            filtered (Bool): will not filter out dates that becomes negative
+            filtered (bool): will not filter out dates that becomes negative
                              due to errors in the original entry, and instead
                              uses the absolute value.
         """
@@ -118,11 +118,11 @@ class Delivery(Base):
     
     def custom_sort(self, value_list, idx=1):
         """
-        sort nested list containing np.NaN/None
+        sort nested list containing np.NaN/None.
         
         args:
-            value_list (list): nested list
-            idx (int): index to sort
+            value_list (list): nested list.
+            idx (int): index to sort.
         
         return:
             nested list with the sorted entries.
@@ -150,8 +150,8 @@ class Delivery(Base):
         sorts the result, and stores the result as sql file.
         
         args:
-            idx (int): index to sort
-            get_table (Bool): prints a table when not False
+            idx (int): index to sort.
+            get_table (bool): prints a table when not False.
         """
         idx = self.check_index(idx, len(self.result[0]), 'column', 'column')
         result = self.custom_sort(self.result, idx)
@@ -169,7 +169,7 @@ class Delivery(Base):
         
         args:
             dictionary (dict): company name as keys, and list with time as
-                               values
+                               values.
         return:
             dictionary with the average values.
         """

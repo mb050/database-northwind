@@ -16,33 +16,33 @@ class Base():
     django queryset.
     
     methods:
-        initiate_less_used: loads in less commonly used querysets
-        initiate_customer_specific: loads in customer demo and demographics
-        initiate_default: default initiation
-        setup_interval_sales: creates date related variables and methods
-        setup_months: creates a list with months
-        sort_dates: sorts dates into months
-        sort_list: sorts nested lists
-        universal_table: create table
-        get_customer_list: creates a list containing customer_id
-        check_index: check if a given index is within range
-        get_order: count amount of orders given a variable
+        initiate_less_used: loads in less commonly used querysets.
+        initiate_customer_specific: loads in customer demo and demographics.
+        initiate_default: default initiation.
+        setup_interval_sales: creates date related variables and methods.
+        setup_months: creates a list with months.
+        sort_dates: sorts dates into months.
+        sort_list: sorts nested lists.
+        universal_table: create table.
+        get_customer_list: creates a list containing customer_id.
+        check_index: check if a given index is within range.
+        get_order: count amount of orders given a variable.
         get_customer_orders: creates a dict containing customer_id or 
-            employee_id and amount of orders
-        get_detailed_orders: create array and dict containing orderdetails
-        get_order_and_date: creates list sorted based on order and date
-        get_interval_idx: creates array used for making custom intervals
-        retrieve_sales: organize orders into an easier format for further use
-        inner_loop: inner loop to retrieve_sales method
-        get_months: get months based on a given interval size
-        merge_months: merge array into given interval size
-        merge_years: merge array into a single year, while containing intervals
-        merge_universal: method combining both merge_months and merge_years
+            employee_id and amount of orders.
+        get_detailed_orders: create array and dict containing orderdetails.
+        get_order_and_date: creates list sorted based on order and date.
+        get_interval_idx: creates array used for making custom intervals.
+        retrieve_sales: organize orders into an easier format for further use.
+        inner_loop: inner loop to retrieve_sales method.
+        get_months: get months based on a given interval size.
+        merge_months: merge array into given interval size.
+        merge_years: merge array into a single year, while containing 
+                     the intervals.
+        merge_universal: method combining both merge_months and merge_years.
     """
-    
     def __init__(self):
         """
-        stores the most commonly used querysets as instances
+        stores the most commonly used querysets as instances.
         """
         self.categories = Categories.objects.all()
         self.customers = Customers.objects.all()
@@ -59,7 +59,7 @@ class Base():
     
     def initiate_less_used(self):
         """
-        stores less commonly used querysets as instances
+        stores less commonly used querysets as instances.
         """
         self.employeeterritories = EmployeeTerritories.objects.all()
         self.region = Region.objects.all()
@@ -68,14 +68,14 @@ class Base():
     
     def initiate_customer_specific(self):
         """
-        stores the least used or unused querysets as instances
+        stores the least used or unused querysets as instances.
         """
         self.customercustomerdemo = CustomerCustomerDemo.objects.all()
         self.customerdemographics = CustomerDemographics.objects.all()
     
     def initiate_default(self):
         """
-        initiation of crucial methods
+        initiation of crucial methods.
         """
         self.get_detailed_orders()
         self.setup_interval_sales()
@@ -87,7 +87,7 @@ class Base():
     def setup_interval_sales(self):
         """
         initiation of crucial methods and creation of instances related to
-        dates
+        dates.
         """
         self.get_order_and_date()
         
@@ -103,7 +103,7 @@ class Base():
         
     def setup_months(self):
         """
-        create a list with months
+        create a list with months.
         """
         self.months = [''] * 12
         for i in range(12):
@@ -111,7 +111,7 @@ class Base():
     
     def sort_dates(self):
         """
-        separates the dates into months as nested lists
+        separates the dates into months as nested lists.
         """
         self.date_list = []
         
@@ -123,15 +123,15 @@ class Base():
     
     def sort_list(self, value_list, idx, reverse=True):
         """
-        sort nested list
+        sort nested list.
         
         args:
-            value_list (list): nested list
-            idx (int): index
-            reverse (bool): True
+            value_list (list): nested list.
+            idx (int): index.
+            reverse (bool): True.
         
         return:
-            sorted_list (list): sorted list given index
+            sorted_list (list): sorted list given index.
         """
         index_to_sort = lambda x: x[idx]
         sorted_list = sorted(value_list, key=index_to_sort)
@@ -144,15 +144,15 @@ class Base():
     def universal_table(self, content_list, headers, return_table=False,
                         tablefmt='presto'):
         """
-        creates a table
+        creates a table.
         
         args:
-            content_list (list): nested_list
-            headers (list): list containing str
-            return_table (bool): False
+            content_list (list): nested_list.
+            headers (list): list containing str.
+            return_table (bool): False.
         
         return:
-            table (table): if return_table is not False
+            table (table): if return_table is not False.
         """
         table = tabulate(content_list, headers=headers, tablefmt=tablefmt)
         if return_table is False:
@@ -172,17 +172,17 @@ class Base():
     def check_index(self, idx, n_elements, message1='', message2='', 
                     start_at_0=True):
         """
-        corrects if an index is out of range
+        corrects if an index is out of range.
         
         args:
-            idx (int): index to check
-            n_elements (int): amount of elements
-            message1 (str): custom text
-            message2 (str): custom text
-            start_at_0 (bool): True
+            idx (int): index to check.
+            n_elements (int): amount of elements.
+            message1 (str): custom text.
+            message2 (str): custom text.
+            start_at_0 (bool): True.
         
         return:
-            idx (int): corrected index
+            idx (int): corrected index.
         """
         text = '\ngiven {} is out of range, defaulting to the {} {}'
         idx -= (start_at_0 is not True)
@@ -200,14 +200,14 @@ class Base():
     def get_order(self, variable='customer_id'):
         """
         creates a dict containing customer_id or employee_id with correlating
-        orders
+        orders.
         
         args:
             variable (str): variable to use, will in most cases be either 
-                            customer_id or employee_id
+                            customer_id or employee_id.
         
         return:
-            dict
+            dict.
         """
         self.count = self.orders.values_list(variable).annotate(
             tot=Count(variable)).order_by('-tot')
@@ -220,10 +220,10 @@ class Base():
         
         args:
             variable_filter (str): variable to use, will in most cases be 
-                                   either customer_id or employee_id
+                                   either customer_id or employee_id.
         
         return:
-            self.order_dict (dict): dict containing amount of orders
+            self.order_dict (dict): dict containing amount of orders.
         """
         variable = 'order_id'
         self.order_dict = {}        
@@ -242,7 +242,7 @@ class Base():
     def get_detailed_orders(self):
         """
         creates array containing orderdetails and corresponding entries given
-        a specific order_id
+        a specific order_id.
         """
         variable = 'order_id'
         individual_order = self.orderdetails.values_list(variable
@@ -268,7 +268,7 @@ class Base():
     def get_order_and_date(self):
         """
         creates two dictionaries, one with date as key, and one with the 
-        order_id as key
+        order_id as key.
         """
         var = ['order_id', 'order_date']
         order_date = list(Orders.objects.all().values_list(*var))
@@ -336,14 +336,14 @@ class Base():
     
     def inner_loop(self, date_list, price_val, i, j):
         """
-        the inner loop from retrieve_sales method
+        the inner loop from retrieve_sales method.
         
         args:
             date_list (list): nested list of size 12 containing 
-                              orders for a given month
-            price_val (np.array): array containing the prices
-            i (int): iteration
-            j (int): iteration
+                              orders for a given month.
+            price_val (np.array): array containing the prices.
+            i (int): iteration.
+            j (int): iteration.
         """
         for date_key in date_list:
             for order_id in self.date_to_order[date_key]:
@@ -358,10 +358,10 @@ class Base():
         at.
         
         args:
-            interval_size (int): interval size in months
+            interval_size (int): interval size in months.
             
         return:
-            months (list): list of str
+            months (list): list of str.
         """
         n = int(12 / interval_size)
         months = self.months.copy()
@@ -378,12 +378,12 @@ class Base():
         merges the 12 months into defined interval size.
         
         args:
-            arr (bool, or arr): array containing the data, defaults to 
-                                self.month_data if none are provieded
-            interval_size (int): interval size
+            arr (bool, or np.array): array containing the data, defaults to 
+                                     self.month_data if none are provieded
+            interval_size (int): interval size.
         
         return:
-            merged (list): merged list
+            merged (list): merged list.
         """
         if arr is None:
             arr = self.month_data
@@ -405,13 +405,13 @@ class Base():
 
     def merge_years(self, arr=None):
         """
-        merges the different years into a single year
+        merges the different years into a single year.
         
         args:
-            arr (bool, or arr): array containing the data, defaults to 
-                                self.month_data if none are provieded
+            arr (bool, or np.array): array containing the data, defaults to 
+                                     self.month_data if none are provieded.
         return:
-            merged (list or np.array): array/list used
+            merged (list or np.array): array/list used.
         """
         if arr is None:
             arr = self.month_data
@@ -426,15 +426,15 @@ class Base():
     
     def merge_universal(self, arr=None, interval_size=3):
         """
-        combines merge_years and combine_months
+        combines merge_years and combine_months.
         
         args:
-            arr (bool, or arr): array containing the data, defaults to 
-                                self.month_data if none are provieded
-            interval_size (int): interval size
+            arr (bool, or np.array): array containing the data, defaults to 
+                                     self.month_data if none are provieded.
+            interval_size (int): interval size.
         
         return:
-            merged (list): merged list
+            merged (list): merged list.
         """
         if arr is None:
             arr = self.month_data

@@ -25,6 +25,19 @@ from classes.base import Base
 
 
 class Main(Query_functions, Utility):
+    """
+    main function which allows the user to choose which queries to use.
+    
+    methods:
+        check_folder: check if certain folder exists.
+        setup_class_objects: initiates the querysets.
+        menu: method for the main menu in the interface.
+        category_storage:method for the main menu in the interface.
+        category_sale:method for the sale queries in the interface.
+        category_employee: method for the employee queries in the interface.  
+        category_product: method for the product queries in the interface.
+        category_delivery: method for the delivery queries in the interface.
+    """
     def __init__(self):
         self.check_folder()
         super().__init__()
@@ -33,6 +46,9 @@ class Main(Query_functions, Utility):
         self.menu()
     
     def check_folder(self):
+        """
+        check and creates necessary folders if they don't exist.
+        """
         if exists('sql_files') is not True:
             os.mkdir('sql_files')
         
@@ -40,9 +56,12 @@ class Main(Query_functions, Utility):
             os.mkdir('txt_files')
     
     def setup_class_objects(self):
+        """
+        prepares and initiates the querysets for later use.
+        """
         base_obj = Base()
         base_obj.initiate_default()
-        print(type(base_obj.orders))
+        
         self.storage_obj = Storage(base_obj)
         
         self.sale_obj = Sales(base_obj)
@@ -57,6 +76,9 @@ class Main(Query_functions, Utility):
         self.delivery_obj = Delivery(base_obj)
     
     def menu(self):
+        """
+        method for the main menu in the interface.
+        """
         text, help_str = self.support_text('main menu')
         title, invalid, enter_message = text[:3]
         command_str, overview, option = text[3:]
@@ -102,6 +124,12 @@ class Main(Query_functions, Utility):
                 was_invalid = True
 
     def category_storage(self):
+        """
+        method for the storage queries in the interface.
+        
+        return:
+            True.
+        """
         text, help_str = self.support_text('storage')
         title, invalid, enter_message = text[:3]
         command_str, overview, option = text[3:]
@@ -143,6 +171,12 @@ class Main(Query_functions, Utility):
         return True
     
     def category_sale(self):
+        """
+        method for the sale queries in the interface.
+        
+        return:
+            True.
+        """
         text, help_str = self.support_text('sale')
         title, invalid, enter_message = text[:3]
         command_str, overview, option = text[3:]
@@ -199,6 +233,12 @@ class Main(Query_functions, Utility):
         return True
     
     def category_employee(self):
+        """
+        method for the employees queries in the interface.
+        
+        return:
+            True.
+        """
         text, help_str = self.support_text('employee')
         title, invalid, enter_message = text[:3]
         command_str, overview, option = text[3:]
@@ -240,6 +280,12 @@ class Main(Query_functions, Utility):
         return True
     
     def category_product(self):
+        """
+        method for the product queries in the interface.
+        
+        return:
+            True.
+        """
         text, help_str = self.support_text('product')
         title, invalid, enter_message = text[:3]
         command_str, overview, option = text[3:]
@@ -290,6 +336,12 @@ class Main(Query_functions, Utility):
         return True
     
     def category_delivery(self):
+        """
+        method for the delivery queries in the interface.
+        
+        return:
+            True.
+        """
         text, help_str = self.support_text('delivery')
         title, invalid, enter_message = text[:3]
         command_str, overview, option = text[3:]

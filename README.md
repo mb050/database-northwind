@@ -38,6 +38,6 @@ deretter bruk
 ``py manage.py makemigrations [app-navn]``
 ``py manage.py migrate``
 
-legg inn resten av filene. for å kjøre koden så bruk
+legg inn resten av filene. Bruk for å kjøre koden 
 
 ``py main.py``

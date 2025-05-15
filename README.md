@@ -1,4 +1,5 @@
 # database-northwind
+## røff skisse
 oppgave rundt database i python med bruk av django
 
 krever:
@@ -10,7 +11,7 @@ tabulate
 
 sett opp virtual environmnet med 
 
-py -m venv [prosjektnavn]
+``py -m venv [prosjektnavn]``
 
 installer de ulike libraries nevnt ovenfor.
 start nytt django prosjekt med 
@@ -27,18 +28,16 @@ installer docker, og bruk
 
 ``docker-compose up`` 
 
-på northwind.sql filen.
+på northwind.sql filen. bruk så
 
-bruk
-
-py manage.py inspectdb
-py manage.py inspectdb > models.py
+``py manage.py inspectdb``
+``py manage.py inspectdb > models.py``
 
 deretter bruk
 
-python manage.py makemigrations [app-navn]
-python manage.py migrate
+``py manage.py makemigrations [app-navn]``
+``py manage.py migrate``
 
 legg inn resten av filene. for å kjøre koden så bruk
 
-py main.py
+``py main.py``

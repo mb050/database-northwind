@@ -309,10 +309,10 @@ class Main(Query_functions, Utility):
                 self.product_obj.product_sold(variables)
             elif input_str in ['categories', 'cate']:
                 skip, variables = self.product_query_sales(always_default)
-                self.product_obj.category_sales(variables, 'supplier_id')
+                self.product_obj.category_sales(variables, 'category_id')
             elif input_str in ['suppliers', 'supp']:
                 skip, variables = self.product_query_sales(always_default)
-                self.product_obj.category_sales(variables, 'category_id')
+                self.product_obj.category_sales(variables, 'supplier_id')
             
             if skip is True:
                 print('\n> Query complete\n', overview)

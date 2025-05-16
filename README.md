@@ -7,7 +7,7 @@ krever:
 ``django 5.1.6``\
 ``numpy``\
 ``matplotlib``\
-``tabulate``\
+``tabulate``
 
 sett opp virtual environmnet med 
 

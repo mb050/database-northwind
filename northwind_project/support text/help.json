@@ -1,0 +1,462 @@
+{
+	"main menu": {
+    	"title": "main menu",
+		"input": "\nEnter category or command:\n>",
+    	"commands": [
+        	"\nextra commands:",
+        	"\n\t- help",
+        	"\n\t- option",
+        	"\n\t- default_setting",
+        	"\n\t- quit"
+        ],
+        "overview": [
+            "\navailable category/categories:",
+            "\n\t- storage",
+            "\n\t- sale",
+            "\n\t- employee",
+            "\n\t- product",
+            "\n\t- delivery"
+        ],
+        "help": {
+			"\nextra commands:": [
+				"\n\t\t\u00B7 Additional commands not related or indirectly related to the queries." 
+			],
+        	"\n\t- help:": [
+				"\n\t\t\u00B7 Provides additional information for all valid commands."
+			],
+        	"\n\t- option:": [
+				"\n\t\t\u00B7 Lists all valid commands."
+			],
+        	"\n\t- default_setting:": [
+				"\n\t\t\u00B7 default_setting is set to False by default, and enable/disable the",
+				"\n\t\t\u00B7 option for more customizeable output. Can be changed to True",
+				"\n\t\t\u00B7 or False when the command is excecuted. When changed in main menu",
+				"\n\t\t\u00B7 it will take effect globally, in all the query categories."
+			],
+        	"\n\t- quit:": [
+				"\n\t\t\u00B7 Exit the program. Empty input, \"stop\" and \"exit\" will also be",
+				"\n\t\t\u00B7 accepted to stop the program from running."
+			],
+            "\n\navailable category/categories:": [
+				"\n\t\t\u00B7 Queries grouped together into categories."
+			],
+            "\n\t- storage:": [
+				"\n\t\t\u00B7 Go to queries related to storage."
+			],
+            "\n\t- sale:": [
+				"\n\t\t\u00B7 Go to queries related to sale."
+			],
+            "\n\t- employee:": [
+				"\n\t\t\u00B7 Go to queries related to employees."
+			],
+            "\n\t- product:": [
+				"\n\t\t\u00B7 Go to queries related to product."
+			],
+            "\n\t- delivery:": [
+				"\n\t\t\u00B7 Go to queries related to delivery."
+			]
+        },
+        "options": [
+            "\nextra commands:",
+        	"\n\t- help",
+        	"\n\t- option",
+        	"\n\t- default_setting",
+        	"\n\t- quit",
+            "\n\navailable category/categories:",
+            "\n\t- storage",
+            "\n\t- sale",
+            "\n\t- employee",
+            "\n\t- product",
+            "\n\t- delivery"
+        ],
+        "invalid": "\nInvalid entry.\nEnter a valid category, or type either \"help\" or \"option\":\n>"
+    },
+    
+    "storage": {
+    	"title": "main/storage",
+		"input": "\nEnter query or command:\n>",
+    	"commands": [
+        	"\nextra commands:",
+        	"\n\t- help",
+        	"\n\t- option",
+        	"\n\t- default_setting",
+        	"\n\t- back",
+        	"\n\t- quit"
+        ],
+        "overview": [
+			"\navailable query/queries:",
+			"\n\t- products"
+        ],
+        "help": {
+			"\nextra commands:": [
+				"\n\t\t\u00B7 Additional commands not related or indirectly related to the queries." 
+			],
+        	"\n\t- help:": [
+				"\n\t\t\u00B7 Provides additional information for all valid commands."
+			],
+        	"\n\t- option:": [
+				"\n\t\t\u00B7 Lists all valid commands."
+			],
+        	"\n\t- default_setting:": [
+				"\n\t\t\u00B7 default_setting is set to False by default, and enable/disable the",
+				"\n\t\t\u00B7 option for more customizeable output. Can be changed to True",
+				"\n\t\t\u00B7 or False when the command is excecuted. When changed it will take",
+				"\n\t\t\u00B7 effect locally in this category. It will reset back to the setting",
+				"\n\t\t\u00B7 determined globally when the user returns to the main menu."
+			],
+			"\n\t- back:": [
+				"\n\t\t\u00B7 Return to main menu. Empty input and \"up\" are also valid syntax."
+			],
+        	"\n\t- quit:": [
+				"\n\t\t\u00B7 Exit the program. \"stop\" and \"exit\" will also be",
+				"\n\t\t\u00B7 accepted to stop the program from running."
+			],
+			"\n\navailable query/queries:": [
+				"\n\t\t\u00B7 Query/queries available in this category."
+				],
+			"\n\t- products:": [
+				"\n\t\t\u00B7 Get a table containing all product_id, name, unit_price,",
+				"\n\t\t\u00B7 units_in_stock and supplier_company_name.",
+				"\n\t\t\u00B7 Available variables:",
+				"\n\t\t> get_table: print out the result in the terminal.",
+				"\n\t\t> product_id: print out the info for a single product."
+			]
+		},
+        "options": [
+			"\nextra commands:",
+        	"\n\t- help",
+        	"\n\t- option",
+        	"\n\t- default_setting",
+        	"\n\t- back",
+        	"\n\t- quit",
+            "\n\navailable query/queries:",
+			"\n\t- products"
+        ],
+        "invalid": "\nInvalid entry.\nEnter a valid query, or type either \"help\" or \"option\":\n>"
+    },
+    
+    "sale": {
+    	"title": "main/sale",
+		"input": "\nEnter query or command:\n>",
+    	"commands": [
+        	"\nextra commands:",
+        	"\n\t- help",
+        	"\n\t- option",
+        	"\n\t- default_setting",
+        	"\n\t- back",
+        	"\n\t- quit"
+        ],
+        "overview": [
+			"\navailable query/queries:",
+			"\n\t- sale",
+			"\n\t- monthly_sale",
+			"\n\t- average",
+			"\n\t- demand",
+			"\n\t- trends",
+			"\n\t- compare"
+        ],
+        "help": {
+			"\nextra commands:": [
+				"\n\t\t\u00B7 Additional commands not related or indirectly related to the queries." 
+			],
+        	"\n\t- help:": [
+				"\n\t\t\u00B7 Provides additional information for all valid commands."
+			],
+        	"\n\t- option:": [
+				"\n\t\t\u00B7 Lists all valid commands."
+			],
+        	"\n\t- default_setting:": [
+				"\n\t\t\u00B7 default_setting is set to False by default, and enable/disable the",
+				"\n\t\t\u00B7 option for more customizeable output. Can be changed to True",
+				"\n\t\t\u00B7 or False when the command is excecuted. When changed it will take",
+				"\n\t\t\u00B7 effect locally in this category. It will reset back to the setting",
+				"\n\t\t\u00B7 determined globally when the user returns to the main menu."
+			],
+			"\n\t- back:": [
+				"\n\t\t\u00B7 Return to main menu. Empty input and \"up\" are also valid syntax."
+			],
+        	"\n\t- quit:": [
+				"\n\t\t\u00B7 Exit the program. \"stop\" and \"exit\" will also be",
+				"\n\t\t\u00B7 accepted to stop the program from running."
+			],
+			"\n\navailable query/queries:": [
+				"\n\t\t\u00B7 Query/queries available in this category."
+				],
+			"\n\t- sale:": [
+				"\n\t\t\u00B7 Get a table containing order_id, customer_id, employee_id,",
+				"\n\t\t\u00B7 order_date, ship_country and products. Products contains all",
+				"\n\t\t\u00B7 products ordered and the amount.",
+				"\n\t\t\u00B7 Available variables:",
+				"\n\t\t> get_table: print out the result in the terminal.",
+				"\n\t\t> write_to_file: write the table to a txt file in the folder txt_files."
+			],
+			"\n\t- monthly_sale:": [
+				"\n\t\t\u00B7 Get a table containing the sale of products each months.",
+				"\n\t\t\u00B7 Available variables:",
+				"\n\t\t> include_price: include total value earned.",
+				"\n\t\t> separate_years: separate the data into each year.",
+				"\n\t\t> get_table: print out the result in the terminal.",
+				"\n\t\t> make_plot: create a graph showing the data."
+			],
+			"\n\t- average:": [
+				"\n\t\t\u00B7 Get a table containing the average value each customer spent.",
+				"\n\t\t\u00B7 Available variables:",
+				"\n\t\t> get_table: print out the result in the terminal."
+			],
+			"\n\t- demand:": [
+				"\n\t\t\u00B7 Get a table containing the slope between datapoints.",
+				"\n\t\t\u00B7 Available variables:",
+				"\n\t\t> interval_size: set the size in months of the interval used.",
+				"\n\t\t> get_table: print out the result in the terminal."
+			],
+			"\n\t- trends:": [
+				"\n\t\t\u00B7 Get a table containing the when the sale of a given product were",
+				"\n\t\t\u00B7 at highest and lowest and the month it happened.",
+				"\n\t\t\u00B7 Available variables:",
+				"\n\t\t> get_table: print out the result in the terminal.",
+				"\n\t\t> quarterly: give minimum and maximum for each season."
+			],
+			"\n\t- compare:": [
+				"\n\t\t\u00B7 Get a table containing amount sold, price and the ratio of",
+				"\n\t\t\u00B7 price/amount.",
+				"\n\t\t\u00B7 Available variables:",
+				"\n\t\t> get_table: print out the result in the terminal.",
+				"\n\t\t> make_plot: create a graph showing the data.",
+				"\n\t\t> idx: sort the rows given the values in a given column."
+			]
+        },
+        "options": [
+			"\nextra commands:",
+        	"\n\t- help",
+        	"\n\t- option",
+        	"\n\t- default_setting",
+        	"\n\t- back",
+        	"\n\t- quit",
+            "\n\navailable query/queries:",
+			"\n\t- sale",
+			"\n\t- monthly_sale",
+			"\n\t- average",
+			"\n\t- demand",
+			"\n\t- trends",
+			"\n\t- compare"
+        ],
+        "invalid": "\nInvalid entry.\nEnter a valid query, or type either \"help\" or \"option\":\n>"
+    },
+    
+    "employee": {
+    	"title": "main/employee",
+		"input": "\nEnter query or command:\n>",
+    	"commands": [
+        	"\nextra commands:",
+        	"\n\t- help",
+        	"\n\t- option",
+        	"\n\t- default_setting",
+        	"\n\t- back",
+        	"\n\t- quit"
+        ],
+        "overview": [
+			"\navailable query/queries:",
+			"\n\t- employees"
+        ],
+        "help": {
+			"\nextra commands:": [
+				"\n\t\t\u00B7 Additional commands not related or indirectly related to the queries." 
+			],
+        	"\n\t- help:": [
+				"\n\t\t\u00B7 Provides additional information for all valid commands."
+			],
+        	"\n\t- option:": [
+				"\n\t\t\u00B7 Lists all valid commands."
+			],
+        	"\n\t- default_setting:": [
+				"\n\t\t\u00B7 default_setting is set to False by default, and enable/disable the",
+				"\n\t\t\u00B7 option for more customizeable output. Can be changed to True",
+				"\n\t\t\u00B7 or False when the command is excecuted. When changed it will take",
+				"\n\t\t\u00B7 effect locally in this category. It will reset back to the setting",
+				"\n\t\t\u00B7 determined globally when the user returns to the main menu."
+			],
+			"\n\t- back:": [
+				"\n\t\t\u00B7 Return to main menu. Empty input and \"up\" are also valid syntax."
+			],
+        	"\n\t- quit:": [
+				"\n\t\t\u00B7 Exit the program. \"stop\" and \"exit\" will also be",
+				"\n\t\t\u00B7 accepted to stop the program from running."
+			],
+			"\n\navailable query/queries:": [
+				"\n\t\t\u00B7 Query/queries available in this category."
+				],
+			"\n\t- employees:": [
+				"\n\t\t\u00B7 Get a table containing general information for every registered",
+				"\n\t\t\u00B7 employees, including total amount of product handled and price",
+				"\n\t\t\u00B7 for the sold products.",
+				"\n\t\t\u00B7 Available variables:",
+				"\n\t\t> idx: sort the rows given the values in a given column.",
+				"\n\t\t> write_to_file: write the table to a txt file in the folder txt_files.",
+				"\n\t\t> get_table: print out the result in the terminal."
+			]
+        },
+        "options": [
+			"\nextra commands:",
+        	"\n\t- help",
+        	"\n\t- option",
+        	"\n\t- default_setting",
+        	"\n\t- back",
+        	"\n\t- quit",
+            "\n\navailable query/queries:",
+			"\n\t- employees"
+        ],
+        "invalid": "\nInvalid entry.\nEnter a valid query, or type either \"help\" or \"option\":\n>"
+    },
+    
+    "product": {
+    	"title": "main/product",
+		"input": "\nEnter query or command:\n>",
+    	"commands": [
+        	"\nextra commands:",
+        	"\n\t- help",
+        	"\n\t- option",
+        	"\n\t- default_setting",
+        	"\n\t- back",
+        	"\n\t- quit"
+        ],
+        "overview": [
+			"\navailable query/queries:",
+			"\n\t- products",
+			"\n\t- inventory",
+			"\n\t- categories",
+			"\n\t- suppliers"
+        ],
+        "help": {
+			"\nextra commands:": [
+				"\n\t\t\u00B7 Additional commands not related or indirectly related to the queries." 
+			],
+        	"\n\t- help:": [
+				"\n\t\t\u00B7 Provides additional information for all valid commands."
+			],
+        	"\n\t- option:": [
+				"\n\t\t\u00B7 Lists all valid commands."
+			],
+        	"\n\t- default_setting:": [
+				"\n\t\t\u00B7 default_setting is set to False by default, and enable/disable the",
+				"\n\t\t\u00B7 option for more customizeable output. Can be changed to True",
+				"\n\t\t\u00B7 or False when the command is excecuted. When changed it will take",
+				"\n\t\t\u00B7 effect locally in this category. It will reset back to the setting",
+				"\n\t\t\u00B7 determined globally when the user returns to the main menu."
+			],
+			"\n\t- back:": [
+				"\n\t\t\u00B7 Return to main menu. Empty input and \"up\" are also valid syntax."
+			],
+        	"\n\t- quit:": [
+				"\n\t\t\u00B7 Exit the program. \"stop\" and \"exit\" will also be",
+				"\n\t\t\u00B7 accepted to stop the program from running."
+			],
+			"\n\navailable query/queries:": [
+				"\n\t\t\u00B7 Query/queries available in this category."
+				],
+			"\n\t- products:": [
+				"\n\t\t\u00B7 Get a table containing all product_id, name, unit_price,",
+				"\n\t\t\u00B7 units_in_stock and supplier_company_name.",
+				"\n\t\t\u00B7 Available variables:",
+				"\n\t\t> get_table: print out the result in the terminal.",
+				"\n\t\t> product_id: print out the info for a single product."
+			],
+			"\n\t- inventory:": [
+				"\n\t\t\u00B7 Get a table containing the amount of products in stock and the",
+				"\n\t\t\u00B7 amount sold of each products.",
+				"\n\t\t\u00B7 Available variables:",
+				"\n\t\t> get_table: print out the result in the terminal."
+			],
+			"\n\t- categories:": [
+				"\n\t\t\u00B7 Get a table containing the categories, amount of products in each",
+				"\n\t\t\u00B7 category, and the total amount of products sold in each category.",
+				"\n\t\t\u00B7 Available variables:",
+				"\n\t\t> get_table: print out the result in the terminal."
+			],
+			"\n\t- suppliers:": [
+				"\n\t\t\u00B7 Get a table containing the suppliers, amount of products each",
+				"\n\t\t\u00B7 suppliers provide and the total amount of products sold.",
+				"\n\t\t\u00B7 Available variables:",
+				"\n\t\t> get_table: print out the result in the terminal."
+			]
+		},
+        "options": [
+			"\nextra commands:",
+        	"\n\t- help",
+        	"\n\t- option",
+        	"\n\t- default_setting",
+        	"\n\t- back",
+        	"\n\t- quit",
+            "\n\navailable query/queries:",
+			"\n\t- products",
+			"\n\t- inventory",
+			"\n\t- categories",
+			"\n\t- suppliers"
+        ],
+        "invalid": "\nInvalid entry.\nEnter a valid query, or type either \"help\" or \"option\":\n>"
+    },
+    
+    "delivery": {
+    	"title": "main/delivery",
+		"input": "\nEnter query or command:\n>",
+    	"commands": [
+        	"\nextra commands:",
+        	"\n\t- help",
+        	"\n\t- option",
+        	"\n\t- default_setting",
+        	"\n\t- back",
+        	"\n\t- quit"
+        ],
+        "overview": [
+			"\navailable query/queries:",
+			"\n\t- delivery_time"
+        ],
+        "help": {
+			"\nextra commands:": [
+				"\n\t\t\u00B7 Additional commands not related or indirectly related to the queries." 
+			],
+        	"\n\t- help:": [
+				"\n\t\t\u00B7 Provides additional information for all valid commands."
+			],
+        	"\n\t- option:": [
+				"\n\t\t\u00B7 Lists all valid commands."
+			],
+        	"\n\t- default_setting:": [
+				"\n\t\t\u00B7 default_setting is set to False by default, and enable/disable the",
+				"\n\t\t\u00B7 option for more customizeable output. Can be changed to True",
+				"\n\t\t\u00B7 or False when the command is excecuted. When changed it will take",
+				"\n\t\t\u00B7 effect locally in this category. It will reset back to the setting",
+				"\n\t\t\u00B7 determined globally when the user returns to the main menu."
+			],
+			"\n\t- back:": [
+				"\n\t\t\u00B7 Return to main menu. Empty input and \"up\" are also valid syntax."
+			],
+        	"\n\t- quit:": [
+				"\n\t\t\u00B7 Exit the program. \"stop\" and \"exit\" will also be",
+				"\n\t\t\u00B7 accepted to stop the program from running."
+			],
+			"\n\navailable query/queries:": [
+				"\n\t\t\u00B7 Query/queries available in this category."
+				],
+			"\n\t- delivery_time:": [
+				"\n\t\t\u00B7 Get a table containing the company_name, the average time it",
+				"\n\t\t\u00B7 takes from an order is shipped to required, and the average time",
+				"\n\t\t\u00B7 taken between order date to required.",
+				"\n\t\t\u00B7 Available variables:",
+				"\n\t\t> filtered: filter out negative time.",
+				"\n\t\t> idx: sort the rows given the values in a given column.",
+				"\n\t\t> get_table: print out the result in the terminal."
+			]
+		},
+        "options": [
+			"\nextra commands:",
+        	"\n\t- help",
+        	"\n\t- option",
+        	"\n\t- default_setting",
+        	"\n\t- back",
+        	"\n\t- quit",
+            "\n\navailable query/queries:",
+			"\n\t- delivery_time"
+        ],
+        "invalid": "\nInvalid entry.\nEnter a valid query, or type either \"help\" or \"option\":\n>"
+    }
+}

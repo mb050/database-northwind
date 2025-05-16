@@ -3,11 +3,11 @@
 oppgave rundt database i python med bruk av django
 
 krever:
-``python 3.12.7``
-``django 5.1.6``
-``numpy`` 
-``matplotlib``
-``tabulate``
+``python 3.12.7``\
+``django 5.1.6``\
+``numpy``\
+``matplotlib``\
+``tabulate``\
 
 sett opp virtual environmnet med 
 

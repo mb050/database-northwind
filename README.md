@@ -127,7 +127,7 @@ For å stoppe/lukke serveren bruk:\
 
 På dette stadiet er oppsettet med Django ferdig. legg til mappen ``support text``,\
 og filen ``help.json`` i mappen. I ``[prosjekt_navn]`` legg til ``main.py``, og mappen\
-``classes``, inkludert alt innholdet som kan bli funnet fra denne github siden.
+``classes``, inkludert alt innholdet som kan bli funnet fra denne github siden.\
 Alt skal nå være satt opp, og man kan så kjøre koden ved å bruke:\
 ``py main.py``
 
